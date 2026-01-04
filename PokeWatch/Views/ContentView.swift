@@ -97,9 +97,9 @@ struct ContentView: View {
     }
 
     private var summaryText: String {
-        let availableCount = viewModel.entries.filter { $0.status.isAvailable }.count
-        if availableCount > 0 {
-            return "\(availableCount) stores have availability"
+        let inStockCount = viewModel.entries.filter { $0.status == .inStock }.count
+        if inStockCount > 0 {
+            return "\(inStockCount) stores have stock"
         } else if !viewModel.entries.isEmpty {
             return "No current stock"
         } else {

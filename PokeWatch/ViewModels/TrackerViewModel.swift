@@ -50,7 +50,7 @@ final class TrackerViewModel: ObservableObject {
 
     private func notifyForChanges(old: [StockEntry], new: [StockEntry]) {
         let newlyInStock = new.filter { entry in
-            entry.status.isAvailable && !(old.first { $0.store == entry.store }?.status.isAvailable ?? false)
+            entry.status == .inStock && !(old.first { $0.store == entry.store }?.status == .inStock)
         }
 
         for entry in newlyInStock {
